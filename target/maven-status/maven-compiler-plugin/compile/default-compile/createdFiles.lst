@@ -1,0 +1,3 @@
+StepDefinitions\Seller.class
+StepDefinitions\sole_trader.class
+TestRunner\TestRunner.class
