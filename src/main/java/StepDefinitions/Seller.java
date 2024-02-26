@@ -4,16 +4,13 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 public class Seller {
 
@@ -22,29 +19,29 @@ public class Seller {
     @Given("seller is on the sign up page")
     public void user_is_on_the_sign_up_page() throws InterruptedException {
         System.setProperty("webdriver.http.factory", "jdk-http-client");
-        //System.setProperty("webdriver.chrome.driver", "C:/Users/E5618594/IdeaProjects/OLS/src/main/resources/driver/chromedriver.exe");
-        WebDriverManager.chromedriver().driverVersion("117.0.5938.132").setup();
         driver = new ChromeDriver();
-
-// This section is for headless
-        //WebDriverManager.chromedriver().setup();
-        //ChromeOptions options=new ChromeOptions();
-       // options.addArguments("headless");
-       // driver=new ChromeDriver(options);
-       // driver.get("https://apply-online-featuretest.worldpay.com/");
-       //driver.get("https://apply-online-test.worldpay.com/");
-       // Thread.sleep(2000);
-
-// This section is for Browser Opens//driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
         driver.navigate().to("https://apply-online-featuretest.worldpay.com/");
-        //driver.navigate().to("https://apply-online-test.worldpay.com/");
+
+        //Click on Cookie Pref
+        driver.findElement(By.xpath("//*[@id='termly-code-snippet-support']/div/div/div/div/div[2]/button[3]")).click();
+        //driver.navigate().to("https://apply-online-test.worldpay.com/"); AccessWorldpay Test
         driver.findElement(By.xpath("//*[@id='header-right-content']/div/div[1]/a")).click();
+        driver.manage().window().maximize();
+// This section is for headless
+//        WebDriverManager.chromedriver().setup();
+//        ChromeOptions options=new ChromeOptions();
+//        options.setCapability("browserVersion", "119.0.6045.124");
+//        options.addArguments("headless");
+//        driver=new ChromeDriver(options);
+//        driver.get("https://apply-online-featuretest.worldpay.com/");
+//        //driver.get("https://apply-online-test.worldpay.com/");
+//        Thread.sleep(2000);
     }
 
     //Seller Signs in
     @Then("seller signs in")
-    public void seller_signs_in () throws InterruptedException {
+    public void seller_signs_in() throws InterruptedException {
 
         driver.findElement(By.xpath("//*[@id='LoginViewModel_Email']")).sendKeys("bosco.dsouza+SMB@fisglobal.com");
         driver.findElement(By.xpath("//*[@id='LoginViewModel_Password']")).sendKeys("Tango@1977");
@@ -55,21 +52,22 @@ public class Seller {
     }
 
     @Then("seller clicks on start new application")
-    public void seller_clicks_on_start_new_application () throws InterruptedException {
+    public void seller_clicks_on_start_new_application() throws InterruptedException {
         driver.findElement(By.xpath("//*[@id='main-content']/div[1]/div/a")).click();
         Thread.sleep(5000);
         System.out.println("Seller has clicked on the start new application");
     }
 
-   //Seller enters customer email address and searches
+    //Seller enters customer email address and searches
     @Then("seller enters Customers Email Address as {string}")
-    public void seller_enters_Customers_Email_Address (String customer_email) throws InterruptedException {
+    public void seller_enters_Customers_Email_Address(String customer_email) throws InterruptedException {
         driver.findElement(By.xpath("//*[@id='EmailAddress']")).sendKeys(customer_email);
         Thread.sleep(2000);
         driver.findElement(By.xpath("//*[@id='submit-container']/input")).click();
         Thread.sleep(2000);
         System.out.println("Seller has entered email address");
     }
+
     @Given("seller enters first name as {string}")
     public void seller_enters_first_name_as(String firstname) {
         driver.findElement(By.xpath("//*[@id='FirstName']")).sendKeys(firstname);
@@ -170,10 +168,10 @@ public class Seller {
     public void seller_selects_no_to_amex() throws InterruptedException {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         //No To Amex
-        // WebElement noToAmex = driver.findElement(By.xpath("//*[@id='sales-quote-amex-buttons']/div[2]/label"));
-        //js.executeScript("arguments[0].click();", noToAmex);
-        //Thread.sleep(2000);
-        //System.out.println("Selected No to Amex Card");
+//        WebElement noToAmex = driver.findElement(By.xpath("//*[@id='sales-quote-amex-buttons']/div[2]/label"));
+//        js.executeScript("arguments[0].click();", noToAmex);
+//        Thread.sleep(2000);
+//        System.out.println("Selected No to Amex Card");
 
 
         //Yes To Amex
@@ -650,12 +648,12 @@ public class Seller {
         System.out.println(appCSR.getAttribute("value"));
 
         //Capture Screen shot
-        TakesScreenshot screenshot = (TakesScreenshot)driver;
+        TakesScreenshot screenshot = (TakesScreenshot) driver;
         //Saving the screenshot in desired location
         File source = screenshot.getScreenshotAs(OutputType.FILE);
 
         //Path to the location to save screenshot
-        FileUtils.copyFile(source, new File("C:/Users/E5618594/IdeaProjects/OLS/screenshot/seller-"+csr+".png"));
+        FileUtils.copyFile(source, new File("C:/Users/E5618594/IdeaProjects/OLS/screenshot/seller-" + csr + ".png"));
         System.out.println("Screenshot is captured");
         Thread.sleep(2000);
 

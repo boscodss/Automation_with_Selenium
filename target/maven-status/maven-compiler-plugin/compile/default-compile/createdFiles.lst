@@ -1,3 +1,6 @@
 StepDefinitions\Seller.class
-StepDefinitions\sole_trader.class
+StepDefinitions\Merchant_sole_trader.class
+StepDefinitions\game.class
+StepDefinitions\Test_searchFunction.class
+StepDefinitions\Test_Login.class
 TestRunner\TestRunner.class

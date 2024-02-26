@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class game {
 
@@ -15,9 +16,23 @@ public class game {
 
     @Given("website is open")
     public void website_is_open() {
+       //        This section is for headless
+       //        WebDriverManager.chromedriver().setup();
+       //        ChromeOptions options=new ChromeOptions();
+       //        options.setCapability("browserVersion", "119.0.6045.124");
+       //        options.addArguments("headless");
+       //        driver=new ChromeDriver(options);
+       //        driver.get("https://keytodatascience.com/games/");
+       //        Thread.sleep(2000);
+
+
         System.setProperty("webdriver.http.factory", "jdk-http-client");
-        //System.setProperty("webdriver.chrome.driver", "C:/Users/E5618594/IdeaProjects/OLS/src/main/resources/driver/chromedriver.exe");
-        WebDriverManager.chromedriver().driverVersion("117.0.5938.132").setup();
+        System.setProperty("webdriver.chrome.driver", "C:/Users/E5618594/IdeaProjects/OLS/src/main/resources/driver/chromedriver.exe");
+        WebDriverManager.chromedriver().driverVersion("119.0.6045.160").setup();
+        ChromeOptions options=new ChromeOptions();
+        options.addArguments("headless");
+        WebDriverManager.chromedriver().clearDriverCache().setup();
+        WebDriverManager.chromedriver().clearResolutionCache().setup();
         driver = new ChromeDriver();
         driver.manage().deleteAllCookies();
         driver.navigate().to("https://keytodatascience.com/games/");
@@ -85,5 +100,18 @@ public class game {
         driver.findElement(By.xpath("//*[text()='49']")).click();
         driver.findElement(By.xpath("//*[text()='50']")).click();
         Thread.sleep(2000);
+        String score = driver.findElement(By.xpath("//*[@id='display-area']")).getText();
+        System.out.println(score);
+
+        if (score.equals("10 -19 secs"))
+        {
+            System.out.println("Your score is Impossible");
+
+        }
+        else if (score.equals("20-29 secs"))
+        {
+            System.out.println("Your score is Impossible");;
+        }
+     driver.quit();
     }
   }

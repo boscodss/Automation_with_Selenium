@@ -42,5 +42,5 @@ Feature: To create an application as Seller
     Then seller clicks on hand over to customer
     Examples:
 
-        | customer_email                        | firstname      | lastname     | phone        | tradingname         |
-        | bosco.dsouza+test261002@fisglobal.com | Bibbie         | Bdawkes      | 07478754119  | Bdawkes_Test        |
+        | customer_email                         | firstname      | lastname            | phone        | tradingname         |
+        | bosco.dsouza+test260201@fisglobal.com  | Jasmin         | Yasmins             | 07478754119  | Yasmins Outlet      |

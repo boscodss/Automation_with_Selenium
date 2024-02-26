@@ -21,7 +21,9 @@ public class Merchant_sole_trader {
     public void user_is_on_the_sign_up_page() {
         System.setProperty("webdriver.http.factory", "jdk-http-client");
         //System.setProperty("webdriver.chrome.driver", "C:/Users/E5618594/IdeaProjects/OLS/src/main/resources/driver/chromedriver.exe");
-        WebDriverManager.chromedriver().driverVersion("117.0.5938.132").setup();
+        WebDriverManager.chromedriver().driverVersion("119.0.6045.160").setup();
+        WebDriverManager.chromedriver().clearDriverCache().setup();
+        WebDriverManager.chromedriver().clearResolutionCache().setup();
         driver = new ChromeDriver();
 
 // This section is for headless
@@ -41,7 +43,7 @@ public class Merchant_sole_trader {
     @Given("user enters first name as {string}")
     public void user_enters_first_name_as(String firstname) throws InterruptedException {
         Thread.sleep(5000);
-        driver.findElement(By.xpath("//*[@id='termly-code-snippet-support']/div/div/div/div[2]/button[3]")).click();
+        //driver.findElement(By.xpath("//*[@id='termly-code-snippet-support']/div/div/div/div[2]/button[3]")).click();
         driver.findElement(By.name("RegistrationViewModel.FirstName")).sendKeys(firstname);
         System.out.println("First Name entered");
     }

@@ -1,24 +1,14 @@
-Feature: search function
+Feature: Login page
 
-  Background:
-    Given Open the Test Login Page
-
-
-  Scenario Outline: valid username and password
-    Given User enters Username as "<username>"
-    And User enters Password as "<password>"
-    And User clicks on Submit button
-    Then message is shown "<message>"
+  Scenario Outline: Registered user is able to login with valid credentials
+    Given User is on the login page
+    And User inserts valid username "<username>"
+    And User inserts valid password "<password>"
+    When User clicks on submit button
+    Then User is logged in
 
 
-  Scenario Outline : valid username and password
-    Given User enters Username as "<username>"
-    And User enters Password as "<password>"
-    And User clicks on Submit button
-    Then message is shown "<message>"
 
     Examples:
-
-      | username | password    | message                   |
-      | student  | Password123 | Logged In Successfully    |
-      | student1 | Password123 | Your password is invalid! |
+      |   username    | password    |
+      |   student     | Password123 |

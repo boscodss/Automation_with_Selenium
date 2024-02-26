@@ -16,7 +16,9 @@ public class Test_searchFunction {
     public void Open_site() {
         System.setProperty("webdriver.http.factory", "jdk-http-client");
         //System.setProperty("webdriver.chrome.driver", "C:/Users/E5618594/IdeaProjects/OLS/src/main/resources/driver/chromedriver.exe");
-        WebDriverManager.chromedriver().driverVersion("117.0.5938.132").setup();
+        WebDriverManager.chromedriver().driverVersion("119.0.6045.160").setup();
+        WebDriverManager.chromedriver().clearDriverCache().setup();
+        WebDriverManager.chromedriver().clearResolutionCache().setup();
         driver = new ChromeDriver();
         driver.manage().deleteAllCookies();
         driver.navigate().to("https://www.google.co.uk/");
