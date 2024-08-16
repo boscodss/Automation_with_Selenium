@@ -14,7 +14,7 @@ Feature: To create an application as Seller
     Then seller select noThanks
     When seller selects product
     Then seller is on Choose your pricing plan
-    And seller selects no to amex
+#    And seller selects no to amex
     Then seller click on proceed with online application
     And seller clicks on lets start
     Then seller CSR is shown
@@ -42,5 +42,5 @@ Feature: To create an application as Seller
     Then seller clicks on hand over to customer
     Examples:
 
-        | customer_email                         | firstname      | lastname            | phone        | tradingname         |
-        | bosco.dsouza+test260201@fisglobal.com  | Jasmin         | Yasmins             | 07478754119  | Yasmins Outlet      |
+        | customer_email                         | firstname       | lastname              | phone        | tradingname         |
+        | bosco.dsouza+test016801@fisglobal.com  | Aslefx          | Scwagffz              | 07478754119  | Aslefx Outlet       |
